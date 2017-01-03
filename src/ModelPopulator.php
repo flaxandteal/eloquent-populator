@@ -311,6 +311,8 @@ class ModelPopulator
 
         // Prevents a DBALException if the table contains an enum.
         $schema->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
+        $schema->getDatabasePlatform()->registerDoctrineTypeMapping('json', 'json_array');
+        $schema->getDatabasePlatform()->registerDoctrineTypeMapping('uuid', 'guid');
 
         $table = $connection->getTablePrefix() . $model->getTable();
 

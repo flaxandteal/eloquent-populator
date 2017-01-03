@@ -97,6 +97,16 @@ class ColumnTypeGuesser
                 return function () {
                     return $this->generator->text;
                 };
+            case 'guid':
+                return function () {
+                    return $this->generator->uuid;
+                };
+            case 'json_array':
+                return function () {
+                    return json_encode([
+                        $this->generator->word => mt_rand(0, 10)
+                    ]);
+                };
             case 'datetime':
             case 'date':
             case 'time':
