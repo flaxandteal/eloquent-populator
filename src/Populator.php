@@ -98,9 +98,12 @@ class Populator
         }
 
         if ($testing) {
+            // Avoid direct recursion loop
+            $owners = array_diff($modelPopulator->getOwners(), [$modelClass]);
+
             // Adds the owners before the model that was passed to make() or create(),
             // and in reverse order, so that the children will be associated to their parents.
-            $this->addOwners($modelPopulator->getOwners());
+            $this->addOwners($owners);
 
             $this->modelPopulators = array_insert($this->modelPopulators, [$modelClass => $modelPopulator], -1);
             $this->quantities = array_insert($this->quantities, [$modelClass => $quantity], -1);

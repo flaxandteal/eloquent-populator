@@ -726,7 +726,10 @@ class ModelPopulator
 
         $this->associateNullableForeignKeys();
 
-        $this->populator->addOwners($this->getOwners());
+        $modelClass = get_class($this->model);
+        // Avoid direct recursion loop
+        $owners = array_diff($this->getOwners(), [$modelClass]);
+        $this->populator->addOwners($owners);
 
         return last($this->populator->execute($persist));
     }
