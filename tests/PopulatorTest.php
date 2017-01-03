@@ -80,6 +80,7 @@ class PopulatorTest extends PopulatorTestCase
         $this->assertInstanceOf(Carbon::class, $user->date);
         $this->assertInstanceOf(Carbon::class, $user->time);
         $this->assertInstanceOf(Carbon::class, $user->timestamp);
+        $this->assertInstanceOf(Carbon::class, $user->datetimetz);
     }
 
     public function testColumnNameGuesser()

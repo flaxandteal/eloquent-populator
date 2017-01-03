@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->timestamp('timestamp');
+            $table->dateTimeTz('datetimetz');
 
             $table->integer('company_id')->unsigned()->nullable();
             $table->foreign('company_id')->references('id')->on('companies');

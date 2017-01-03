@@ -100,6 +100,7 @@ class ColumnTypeGuesser
             case 'datetime':
             case 'date':
             case 'time':
+            case 'datetimetz':
                 return function () {
                     return Carbon::instance($this->generator->datetime);
                 };
