@@ -512,7 +512,9 @@ class ModelPopulator
             $this->model->save();
 
             foreach ($this->pivotPopulators as $pivotPopulator) {
-                $pivotPopulator->execute($this->model, $insertedPKs);
+                if (array_key_exists($pivotPopulator->getRelatedClass(), $insertedPKs)) {
+                    $pivotPopulator->execute($this->model, $insertedPKs);
+                }
             }
         }
 

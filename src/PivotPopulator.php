@@ -252,4 +252,14 @@ class PivotPopulator
         // so we have to return the related class as well to differentiate them.
         return [$this->relatedClass, $table, $bulkInsertRecords, $foreignKey];
     }
+
+    /**
+     * Get the class name of the related class.
+     *
+     * @return string
+     */
+    public function getRelatedClass()
+    {
+        return $this->relatedClass;
+    }
 }
